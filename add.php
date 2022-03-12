@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-<header><h1>Capes API</h1>
+<header><h1>Nabia | Capes API</h1>
     <a class="add" href="index.php">Home</a>
 </header>
 <form action="" method="post">
