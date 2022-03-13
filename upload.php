@@ -7,8 +7,12 @@
 
     if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
       header("Location: index.php");
+      $log  = "[".date("F j, Y, g:i a")."] Image File Uploaded: | Name: ".$_FILES['uploaded_file']['name'].PHP_EOL;
+      file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
     } else{
         echo "There was an error uploading the file, please try again!";
+        $log  = "[".date("F j, Y, g:i a")."] Image File Error: There was an error uploading the file".PHP_EOL;
+        file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
     }
   }
 ?>

@@ -7,6 +7,8 @@ if(isset($_GET['remove'])){
         unset($d1[$u0]);
         file_put_contents('users.json',json_encode($d1,JSON_PRETTY_PRINT));
         header("Location: index.php");
+            $log  = "[".date("F j, Y, g:i a")."] users.json Entry Removed: | Username: ".$u0.PHP_EOL;
+            file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
     }
 }
 if(isset($_GET['remove'])){
@@ -21,6 +23,8 @@ if(isset($_GET['remove'])){
 }
 file_put_contents('uuid.json', $result);
         header("Location: index.php");
+            $log  = "[".date("F j, Y, g:i a")."] uuid.json Entry Removed: | Username: ".$u0.PHP_EOL;
+            file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
     }
 ?>
 <!DOCTYPE html>
@@ -36,7 +40,7 @@ file_put_contents('uuid.json', $result);
 <body>
 <header><h1>Nabia | Capes API</h1>
     <a class="add" href="add.php">Add User</a>
-    <a class="add">⠀⠀</a>
+    <a></a>
     <a class="add" href="upload.php">Upload Cape</a>
 </header>
 <table id="users">

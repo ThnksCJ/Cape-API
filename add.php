@@ -8,6 +8,8 @@ if (isset($_POST['submit'])) {
         $json[$username] = $cape;
         file_put_contents('users.json', json_encode($json, JSON_PRETTY_PRINT));
         header("Location: index.php");
+        $log  = "[".date("F j, Y, g:i a")."] users.json Entry Added: | Cape: ".$cape." | Username: ".$username.PHP_EOL;
+        file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
     }
     $username = strtolower($_POST['username']);
 	if(isset($username)){
@@ -18,6 +20,8 @@ if (isset($_POST['submit'])) {
     	if(strpos($content, $username) === false){
         	fwrite($file, $username."\n");
     	}
+    	$log  = "[".date("F j, Y, g:i a")."] uuid.json Entry Added: | Username: ".$username.PHP_EOL;
+        file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
     	fclose($file);
     }
 }
