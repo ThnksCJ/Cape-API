@@ -29,7 +29,7 @@
 </header>
   <form enctype="multipart/form-data" action="upload.php" method="POST">
     <p>Upload Cape Image</p>
-    <input type="file" id="file" name="uploaded_file" accept="image/x-png,image/jpg,image/jpeg"></input><br/>
+    <input type="file" id="file" name="uploaded_file" accept="image/x-png,image/jpg,image/jpeg,image/tiff,image/x-tiff"></input><br/>
     <button type="submit" name="Upload" >Upload</button>
   </form>
 <script type="text/javascript">
