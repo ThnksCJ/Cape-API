@@ -29,7 +29,7 @@
 </header>
   <form enctype="multipart/form-data" action="upload.php" method="POST">
     <p>Upload Cape Image</p>
-    <input type="file" id="file" name="uploaded_file" accept="image/x-png,image/jpg,image/jpeg,image/tiff,image/x-tiff"></input><br/>
+    <input type="file" id="file" name="uploaded_file" accept="image/x-png,image/jpg,image/jpeg"></input><br/>
     <button type="submit" name="Upload" >Upload</button>
   </form>
 <script type="text/javascript">
@@ -44,7 +44,26 @@ uploadField.onchange = function() {
     };
 };
 </script>
+<script type="text/javascript">
+var fileInput = document.getElementById("file");
+fileInput .onchange = function(e) {
+  e.preventDefault();
+  var file = fileInput.files && fileInput.files[0];
+  var img = new Image();
+  img.src = window.URL.createObjectURL(file);
+  img.onload = function() {
+    var width = img.naturalWidth,
+      height = img.naturalHeight;
+    window.URL.revokeObjectURL(img.src);
+	if (width <= 64 && height <= 32) {
+	} else if (width <= 128 && height <= 64) {
+    } else if (width <= 2048 && height <= 1024) {
+	} else {
+      fileInput.value = ""
+      alert("Your image doesnt match the accepted dimentions of: 2048/1024, 128/64, 64/32")
+    }
+  };
+};
+</script>
 </body>
 </html>
-   
-
