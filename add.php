@@ -1,4 +1,17 @@
 <?php
+if (!file_exists('users.json')) {
+    touch('users.json');
+}
+
+if (!file_exists('uuid.json')) {
+    touch('uuid.json');
+}
+
+if (!file_exists('./logs/log_'.date("j.n.Y").'.log')) {
+    touch('./logs/log_'.date("j.n.Y").'.log');
+    file_put_contents('./logs/log_'.date("j.n.Y").'.log', "".PHP_EOL, FILE_APPEND);
+}
+
 ob_start();
 if (isset($_POST['submit'])) {
     $cape = $_POST['cape'];

@@ -1,5 +1,18 @@
 <?php
 
+if (!file_exists('users.json')) {
+    touch('users.json');
+}
+
+if (!file_exists('uuid.json')) {
+    touch('uuid.json');
+}
+
+if (!file_exists('./logs/API-USAGE-'.date("j.n.Y").'.log')) {
+    touch('./logs/API-USAGE-'.date("j.n.Y").'.log');
+    file_put_contents('./logs/API-USAGE-'.date("j.n.Y").'.log', "".PHP_EOL, FILE_APPEND);
+}
+
 ob_start();
 $imgLoc = 'http://node1.cjstevenson.com:25506/capes/';
 
@@ -7,8 +20,6 @@ if (!array_key_exists('username', $_GET)) {
     http_response_code(400);
     header("Content-Type: application/json");
     die('{status:"error", msg:"Missing parameter: username", usage:"http://node1.cjstevenson.com:25506/api.php?username=(USERNAME)"}');
-    $log  = "[".date("F j, Y, g:i a")."] API Used: | Missing parameter: Username".PHP_EOL;
-    file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
 }
 
 $username = $_GET['username'];
@@ -16,8 +27,6 @@ $username = $_GET['username'];
 if (empty($username)) {
     http_response_code(400);
     die('{status:"error", msg:"Invalid parameter: username"}');
-    $log  = "[".date("F j, Y, g:i a")."] API Used: | Invalid parameter: Username".PHP_EOL;
-    file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
 }
 
 $username = strtolower($username);
@@ -34,11 +43,10 @@ if (!file_exists($img_path)) {
     http_response_code(500);
     header("Content-Type: application/json");
     die('{status:"error", msg:"Texture missing"}');
-    $log  = "[".date("F j, Y, g:i a")."] API Used: | Error: Texture missing".PHP_EOL;
-    file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
 }
 
 header("Content-Type: image/png");
-$log  = "[".date("F j, Y, g:i a")."] API Used: | Username: ".$username." | Cape: ".$img.PHP_EOL;
-file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
+$data  = "[".date("F j, Y, g:i a")."] API Used: | Username: ".$username." | Cape: ".$img.PHP_EOL;
+file_put_contents('./logs/API-USAGE.log', $data, FILE_APPEND);
+file_put_contents('./logs/API-USAGE-'.date("j.n.Y").'.log', $data, FILE_APPEND);
 print(file_get_contents($img_path));
