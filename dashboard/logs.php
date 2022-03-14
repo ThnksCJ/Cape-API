@@ -63,7 +63,8 @@
                 <span class="text-uppercase page-subtitle">Dashboard</span>
                 <h3 class="page-title">Logs</h3>
               </div>
-            </div id="liveData">
+            </div>
+            <div>
                 <?php
                 if (!file_exists('../logs/log_'.date("j.n.Y").'.log')) {
                     touch('../logs/log_'.date("j.n.Y").'.log');

@@ -66,7 +66,14 @@
                 <h3 class="page-title">Logs</h3>
               </div>
             </div>
-                <?php highlight_file('../logs/API-USAGE-'.date('j.n.Y').'.log'); ?>
+            <div>
+                <?php
+                if (!file_exists('../logs/API-USAGE-'.date('j.n.Y').'.log')) {
+                    touch('../logs/API-USAGE-'.date('j.n.Y').'.log');
+                    file_put_contents('../logs/API-USAGE-'.date('j.n.Y').'.log', "".PHP_EOL, FILE_APPEND);
+                }
+
+                highlight_file('../logs/API-USAGE-'.date('j.n.Y').'.log'); ?>
             </div>
           </div>
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
