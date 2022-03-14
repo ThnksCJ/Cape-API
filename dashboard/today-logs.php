@@ -1,5 +1,12 @@
+<?php
 
+  session_start(); /* Starts the session */
 
+  if($_SESSION['Active'] == false){ /* Redirects user to Login.php if not logged in */
+    header("location:./login.php");
+	  exit;
+  }
+?>
 <!doctype html>
 <html class="no-js h-100" lang="en">
   <head>
@@ -12,9 +19,8 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="../assets/API-dashboard.1.1.0.min.css">
     <link rel="stylesheet" href="styles/extras.1.1.0.min.css">
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
   <body class="h-100">
         <!-- Main Sidebar -->
@@ -50,6 +56,12 @@
                 <a class="nav-link" href="logs.php">
                    <i class="material-icons">error</i>
                    <span>Logs For Today</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">
+                   <i class="material-icons">account_circle</i>
+                   <span>Logout</span>
                 </a>
               </li>
             </ul>

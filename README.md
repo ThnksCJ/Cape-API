@@ -29,3 +29,14 @@ To Add A User You Can Use The GUI Hosted on the base domain
 This URL Will Take You To The Adding Page 
 
 To Remove A User you can use the main page and click the X next to the users name you wish to remove
+
+
+# Password
+
+For the password vist https://phppasswordhash.com/ and hash your password then place it in 
+
+```gradle
+ dashboard/config.php 
+```
+
+on line 4
