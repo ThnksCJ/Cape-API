@@ -54,7 +54,11 @@ file_put_contents('uuid.json', $result);
 <header><h1>Nabia | Capes API</h1>
     <a class="add" href="add.php">Add User</a>
     <a></a>
+    <a></a>
+    <a></a>
     <a class="add" href="upload.php">Upload Cape</a>
+    <a></a>
+    <a></a>
     <a></a>
     <a class="add" href="./dashboard/login.php">Dashboard</a>
 </header>
